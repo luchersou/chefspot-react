@@ -24,21 +24,22 @@ export const Pagination = ({
   if (totalPages <= 1) return null;
 
   return (
-    <div className="flex items-center justify-between mt-4">
-      <p className="text-sm text-gray-600">
+    <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 mt-4">
+      <p className="text-xs sm:text-sm text-gray-600 order-2 sm:order-1">
         Showing {startIndex + 1} to {endIndex} of {totalItems} {itemName}
       </p>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1.5 sm:gap-2 order-1 sm:order-2">
         <Button
           variant="outline"
           size="sm"
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
+          className="px-2 sm:px-3"
         >
-          <ChevronLeft className="w-4 h-4 mr-1" />
-          Previous
+          <ChevronLeft className="w-4 h-4 sm:mr-1" />
+          <span className="hidden sm:inline">Previous</span>
         </Button>
-        <span className="text-sm font-medium">
+        <span className="text-xs sm:text-sm font-medium whitespace-nowrap px-1 sm:px-2">
           Page {currentPage} of {totalPages}
         </span>
         <Button
@@ -46,9 +47,10 @@ export const Pagination = ({
           size="sm"
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
+          className="px-2 sm:px-3"
         >
-          Next
-          <ChevronRight className="w-4 h-4 ml-1" />
+          <span className="hidden sm:inline">Next</span>
+          <ChevronRight className="w-4 h-4 sm:ml-1" />
         </Button>
       </div>
     </div>

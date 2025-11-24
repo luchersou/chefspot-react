@@ -26,22 +26,23 @@ export const Header = () => {
         z-50
       "
     >
-      <div className="mx-auto px-6 sm:px-12 md:px-16 lg:px-20 xl:px-24 2xl:px-32">
-        <div className="flex items-center justify-between h-20">
+      <div className="mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 2xl:px-32">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           <Logo />
-
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-2 sm:gap-4 md:gap-8">
             <Button
               variant="ghost"
               onClick={() => navigate("/about")}
               className={`
                 ${textColor}
-                text-lg
+                hidden sm:inline-block
+                text-sm sm:text-base md:text-lg
+                px-2 sm:px-4
                 hover:opacity-80
                 transition
               `}
             >
-              About
+              About Us
             </Button>
 
             {user ? (

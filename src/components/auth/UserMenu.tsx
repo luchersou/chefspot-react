@@ -32,7 +32,6 @@ export const UserMenu = ({ user, onLogout }: UserMenuProps) => {
       >
         Hello, {displayName}
       </span>
-
       <DropdownMenu>
         <DropdownMenuTrigger className="focus:outline-none">
           <Avatar
@@ -40,18 +39,11 @@ export const UserMenu = ({ user, onLogout }: UserMenuProps) => {
               w-12 h-12
               transition
               hover:scale-105
-              outline-none
-              ring-0
               cursor-pointer
             "
           >
             <AvatarImage src={user.photoURL || undefined} alt={displayName} />
-            <AvatarFallback
-              className="
-                bg-gradient-to-br from-orange-500 to-orange-600 
-                text-white font-semibold
-              "
-            >
+            <AvatarFallback className="bg-gradient-to-br from-orange-500 to-orange-600 text-white font-semibold">
               {avatarLetter}
             </AvatarFallback>
           </Avatar>
@@ -76,20 +68,16 @@ export const UserMenu = ({ user, onLogout }: UserMenuProps) => {
 
           <DropdownMenuSeparator className="bg-white/40" />
 
-          <DropdownMenuItem
-            className="justify-center text-base hover:bg-white/40 transition rounded-md"
-          >
-            <Link to="/dashboard" >
-              My Profile
-            </Link>
+          <DropdownMenuItem className="justify-center text-base hover:bg-white/40 transition rounded-md">
+            <Link to="/dashboard">My Profile</Link>
           </DropdownMenuItem>
 
-          <DropdownMenuItem
-            className="justify-center text-base hover:bg-white/40 transition rounded-md"
-          >
-            <Link to="/settings" >
-            Settings
-            </Link>
+          <DropdownMenuItem className="justify-center text-base hover:bg-white/40 transition rounded-md">
+            <Link to="/settings">Settings</Link>
+          </DropdownMenuItem>
+
+          <DropdownMenuItem className="justify-center text-base hover:bg-white/40 transition rounded-md sm:hidden">
+            <Link to="/about">About Us</Link>
           </DropdownMenuItem>
 
           <DropdownMenuSeparator className="bg-white/40" />
@@ -100,7 +88,6 @@ export const UserMenu = ({ user, onLogout }: UserMenuProps) => {
               text-base
               font-medium 
               hover:bg-red-500/20 
-              focus:text-red-700
               transition rounded-md
               justify-center
               cursor-pointer

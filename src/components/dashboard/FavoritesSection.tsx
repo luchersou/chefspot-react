@@ -47,7 +47,7 @@ export const FavoritesSection = () => {
           {favorites.map((meal) => (
             <CarouselItem
               key={meal.idMeal}
-              className="pl-2 md:pl-3 basis-[85%] sm:basis-[60%] md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+              className="pl-2 md:pl-3 basis-[65%] sm:basis-[60%] md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
             >
               <MealCard
                 id={meal.idMeal}

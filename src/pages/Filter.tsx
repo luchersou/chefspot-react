@@ -4,6 +4,7 @@ import { Header } from "@/components/layout/Header";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { AppBreadcrumbs } from "@/components/elements/AppBreadcrumbs";
 import { Search } from "lucide-react";
 import { getIngredientNames } from "@/utils/getIngredientNames";
 import { useMealsByName } from "@/hooks/useMeals";
@@ -40,7 +41,13 @@ export const Filters = () => {
   return (
     <>
       <Header />
-      <div className="w-full pt-24 max-w-4xl mx-auto p-4 space-y-6">
+      <div className="w-full pt-30 max-w-4xl mx-auto p-4 space-y-6">
+        <AppBreadcrumbs 
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Filter" }
+          ]}
+        />
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
           Recipe Search
         </h1>
@@ -72,7 +79,7 @@ export const Filters = () => {
           <p className="text-center py-8 text-gray-500">No recipes found for "{nameFromUrl}"</p>
         ) : (
           <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
               {visibleMeals.map((meal) => (
                 <MealCard
                   key={meal.idMeal}
