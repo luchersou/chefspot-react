@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/context/AuthContext";
 import { reauthenticateWithCredential, EmailAuthProvider } from "firebase/auth";
+import { getFirebaseDeleteError } from "@/utils/firebaseErrors";
 
 export const DangerZone = () =>{
   const { user, deleteUserAccount } = useAuth();
@@ -17,8 +18,10 @@ export const DangerZone = () =>{
       setMessage("User not found.");
       return;
     }
+
     setLoading(true);
     setMessage(null);
+
     try {
       const credential = EmailAuthProvider.credential(user.email, password);
       await reauthenticateWithCredential(user, credential);
@@ -27,26 +30,13 @@ export const DangerZone = () =>{
       setMessage("Account deleted successfully!");
       setIsModalOpen(false);
     } catch (error: any) {
-      const code = error.code || "";
-      const messageLower = (error.message || "").toLowerCase();
-
-      if (
-        code === "auth/wrong-password" ||
-        code === "auth/invalid-credential" ||
-        messageLower.includes("wrong password")
-      ) {
-        setMessage("Incorrect password.");
-      } else if (code === "auth/too-many-requests") {
-        setMessage("Too many attempts. Try again later.");
-      } else if (code === "auth/network-request-failed") {
-        setMessage("Network error. Check your connection.");
-      } else {
-        setMessage(`Unexpected error: ${error.message}`);
-      }
+      console.error("Delete error:", error);
+      setMessage(getFirebaseDeleteError(error.code));
     } finally {
       setLoading(false);
     }
   };
+
 
   return (
     <Card className="border-red-300">
@@ -83,7 +73,7 @@ export const DangerZone = () =>{
 
               <Input
                 type="password"
-                placeholder="Senha atual"
+                placeholder="Current password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="flex-1 focus-visible:ring-orange-500"

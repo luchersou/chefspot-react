@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
+import { getFirebaseSignupError } from "@/utils/firebaseErrors";
 
 export const SignUpForm = () => {
   const [form, setForm] = useState({
@@ -14,24 +15,31 @@ export const SignUpForm = () => {
     confirmPassword: "",
   });
 
+  const [error, setError] = useState<string | null>(null);
+
   const { signup, loading } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    setError(null); 
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError("");
+
     if (form.password !== form.confirmPassword) {
-      alert("Passwords don't match.");
+      setError("Passwords don't match.");
       return;
     }
+
     try {
       await signup(form.email, form.password, form.name);
-      navigate("/"); 
-    } catch (error) {
-      console.error("Error creating account", error);
+      navigate("/");
+    } catch (error: any) {
+      console.error("Signup error:", error);
+      setError(getFirebaseSignupError(error.code));
     }
   };
 
@@ -46,6 +54,7 @@ export const SignUpForm = () => {
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
 
+          {/* NAME */}
           <div className="flex flex-col space-y-1">
             <Label htmlFor="name">Name</Label>
             <Input
@@ -60,13 +69,14 @@ export const SignUpForm = () => {
             />
           </div>
 
+          {/* EMAIL */}
           <div className="flex flex-col space-y-1">
             <Label htmlFor="email">Email</Label>
             <Input
               id="email"
               name="email"
               type="email"
-              placeholder="youremail@exemple.com"
+              placeholder="youremail@example.com"
               value={form.email}
               onChange={handleChange}
               className="focus-visible:ring-orange-500"
@@ -74,6 +84,7 @@ export const SignUpForm = () => {
             />
           </div>
 
+          {/* PASSWORD */}
           <div className="flex flex-col space-y-1">
             <Label htmlFor="password">Password</Label>
             <Input
@@ -88,6 +99,7 @@ export const SignUpForm = () => {
             />
           </div>
 
+          {/* CONFIRM PASSWORD */}
           <div className="flex flex-col space-y-1">
             <Label htmlFor="confirmPassword">Confirm password</Label>
             <Input
@@ -101,6 +113,13 @@ export const SignUpForm = () => {
               required
             />
           </div>
+
+          {/* 🔥 ERRO AQUI (entre confirm e botão) */}
+          {error && (
+            <p className="text-red-500 text-sm font-medium -mt-2">
+              {error}
+            </p>
+          )}
 
           <Button type="submit" className="w-full mt-2" disabled={loading}>
             {loading ? "Creating account..." : "Create account"}
@@ -120,4 +139,4 @@ export const SignUpForm = () => {
       </CardContent>
     </Card>
   );
-}
+};

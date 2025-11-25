@@ -10,6 +10,7 @@ import { type Meal } from "@/types/Meal";
 import { useAuth } from "@/context/AuthContext";
 import { useFavorites } from "@/context/FavoritesContext";
 import { useNavigate, useLocation } from "react-router-dom";
+import { getFirebaseLoginError } from "@/utils/firebaseErrors";
 
 export const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -24,6 +25,7 @@ export const LoginForm = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+
     try {
       await login(email, password);
       const state = location.state as {
@@ -34,10 +36,12 @@ export const LoginForm = () => {
         addFavorite(state.favoriteMeal);
       }
       navigate(state?.from || "/dashboard", { replace: true });
-    } catch {
-      setError("Invalid credentials. Please check your email and password.");
+    } catch (error: any) {
+      console.error("Login error:", error);
+      setError(getFirebaseLoginError(error.code));
     }
   };
+
 
   const handleGoogleLogin = async () => {
     setError("");

@@ -36,6 +36,7 @@ export const Header = () => {
               className={`
                 ${textColor}
                 hidden sm:inline-block
+                text-center
                 text-sm sm:text-base md:text-lg
                 px-2 sm:px-4
                 hover:opacity-80

@@ -62,20 +62,17 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const signup = async (email: string, password: string, name: string): Promise<User> => {
     const { user } = await createUserWithEmailAndPassword(auth, email, password);
     await updateProfile(user, { displayName: name });
-    setUser({ ...user, displayName: name });
     return user;
   };
 
   const login = async (email: string, password: string): Promise<User> => {
     const { user } = await signInWithEmailAndPassword(auth, email, password);
-    setUser(user);
     return user;
   };
 
   const loginWithGoogle = async (): Promise<User> => {
     const provider = new GoogleAuthProvider();
     const result = await signInWithPopup(auth, provider);
-    setUser(result.user);
     return result.user;
   };
 
@@ -85,35 +82,27 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   const updateUserName = async (name: string): Promise<void> => {
-    if (!user) {
-      throw new Error("No user logged in");
-    }
-    await updateProfile(user, { displayName: name });
-    setUser({ ...user, displayName: name });
+    if (!auth.currentUser) throw new Error("No user logged in");
+    await updateProfile(auth.currentUser, { displayName: name });
   };
 
   const updateUserEmail = async (email: string): Promise<void> => {
-    if (!user) {
-      throw new Error("No user logged in");
-    }
-    await updateEmail(user, email);
-    setUser({ ...user, email });
+    if (!auth.currentUser) throw new Error("No user logged in");
+    await updateEmail(auth.currentUser, email);
   };
+
 
   const updateUserPassword = async (password: string): Promise<void> => {
-    if (!user) {
-      throw new Error("No user logged in");
-    }
-    await updatePassword(user, password);
+    if (!auth.currentUser) throw new Error("No user logged in");
+    await updatePassword(auth.currentUser, password);
   };
 
+
   const deleteUserAccount = async (): Promise<void> => {
-    if (!user) {
-      throw new Error("No user logged in");
-    }
-    await deleteUser(user);
-    setUser(null);
+    if (!auth.currentUser) throw new Error("No user logged in");
+    await deleteUser(auth.currentUser);
   };
+
 
   const value: AuthContextType = {
     user,
