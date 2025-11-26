@@ -6,7 +6,7 @@ import { Separator } from "@/components/ui/separator";
 import { Label } from "@/components/ui/label";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
-import { type Meal } from "@/types/Meal";
+import type { Meal } from "@/types/Meal";
 import { useAuth } from "@/context/AuthContext";
 import { useFavorites } from "@/context/FavoritesContext";
 import { useNavigate, useLocation } from "react-router-dom";

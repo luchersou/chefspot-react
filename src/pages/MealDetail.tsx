@@ -8,12 +8,13 @@ import { MealInstructions } from "@/components/meals/Instructions";
 import { MealYoutube } from "@/components/meals/MealYoutube";
 import { useMealById } from "@/hooks/useMealById";
 import { getIngredients } from "@/utils/getIngredients";
+import type { Meal } from "@/types/Meal"; 
 
 export const MealDetail = () => {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
 
   const { data, isLoading } = useMealById(id || "");
-  const meal = data?.meals?.[0] || null;
+  const meal: Meal | null = data?.meals?.[0] || null;
 
   if (isLoading) return <p className="text-center py-10">Loading...</p>;
   if (!meal) return <p className="text-center py-10">Meal not found.</p>;
@@ -21,7 +22,6 @@ export const MealDetail = () => {
   return (
     <>
       <Header />
-
       <div className="fixed inset-0 w-full h-full">
         <div
           className="absolute inset-0 bg-cover bg-center bg-fixed"

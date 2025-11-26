@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
-import { type Meal } from "@/types/Meal";
+import type { Meal } from "@/types/Meal";
 import { favoritesReducer, initialFavoritesState } from "@/reducer/favoritesReducer";
 import { useAuth } from "@/context/AuthContext";
 import { useLocation, useNavigate } from "react-router-dom";

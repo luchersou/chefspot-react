@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { api } from "@/services/api";
-import { type Meal } from "@/types/Meal";
+import type { Meal } from "@/types/Meal";
 
 interface MealResponse {
   meals: Meal[] | null;

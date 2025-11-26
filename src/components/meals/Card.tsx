@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Tag, Globe, Flame, Star } from "lucide-react";
 import { MealOverviewModal } from "./OverviewModal";
 import { useFavorites } from "@/context/FavoritesContext";
-import { type Meal } from "@/types/Meal";
+import type { Meal } from "@/types/Meal";
 import { useAuth } from '@/context/AuthContext';
 
 interface MealCardProps {

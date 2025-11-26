@@ -35,16 +35,21 @@ export const Header = () => {
               onClick={() => navigate("/about")}
               className={`
                 ${textColor}
-                hidden sm:inline-block
-                text-center
-                text-sm sm:text-base md:text-lg
-                px-2 sm:px-4
-                hover:opacity-80
-                transition
+                hidden sm:inline-flex
+                items-center justify-center
+                text-sm sm:text-base 
+                px-3 sm:px-4 py-1.5
+                rounded-md
+                hover:bg-white/10
+                active:scale-95
+                transition-all duration-200
+                font-medium
+                tracking-wide
               `}
             >
               About Us
             </Button>
+
 
             {user ? (
               <UserMenu user={user} onLogout={() => logout()} />

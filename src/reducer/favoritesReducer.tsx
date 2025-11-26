@@ -1,4 +1,4 @@
-import { type Meal } from '@/types/Meal';
+import type { Meal } from '@/types/Meal';
 
 export type FavoritesAction =
   | { type: 'ADD_FAVORITE'; payload: Meal }
