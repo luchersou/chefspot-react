@@ -7,13 +7,16 @@ export const Login = () => {
     <>
       <Header />
       <div className="w-full relative overflow-hidden h-[100vh] flex items-center justify-center px-4">
-        <div
+        <img 
+          src={bgLogin}
+          alt="Background"
+          loading="eager"
           className="
             absolute inset-0 
-            bg-cover bg-center 
+            w-full h-full
+            object-cover
             blur-sm scale-110
           "
-          style={{ backgroundImage: `url(${bgLogin})` }}
         />
 
         <LoginForm />

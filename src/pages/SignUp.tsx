@@ -7,10 +7,18 @@ export const SignUp = () => {
     <>
       <Header />
       <div className="w-full relative overflow-hidden h-[100vh] flex items-center justify-center px-4">
-        <div
-          className="absolute inset-0 bg-cover bg-center blur-sm scale-110"
-          style={{ backgroundImage: `url(${bgLogin})` }}
+        <img 
+          src={bgLogin}
+          alt="Background"
+          loading="eager"
+          className="
+            absolute inset-0 
+            w-full h-full
+            object-cover
+            blur-sm scale-110
+          "
         />
+
         <SignUpForm />
       </div>
     </>
