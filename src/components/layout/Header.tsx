@@ -22,7 +22,7 @@ export const Header = () => {
         bg-white/20 
         border-b border-white/30 
         shadow-sm
-        sticky top-0 left-0 w-full 
+        fixed top-0 left-0 w-full 
         z-50
       "
     >

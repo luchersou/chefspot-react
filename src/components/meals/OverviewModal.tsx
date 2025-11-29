@@ -29,7 +29,7 @@ export const MealOverviewModal = ({
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold">{name}</DialogTitle>
           <DialogDescription>
-            Visão Geral Rápida da Receita.
+            Quick Recipe Overview
           </DialogDescription>
         </DialogHeader>
 

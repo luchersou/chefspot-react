@@ -41,7 +41,7 @@ export const AccountSettings = () => {
           <div className="space-y-2">
             <label className="text-sm font-medium">Nome</label>
             <Input 
-              placeholder="Seu nome" 
+              placeholder="Your name" 
               value={name} 
               onChange={(e) => setName(e.target.value)} 
               className="flex-1 focus-visible:ring-orange-500"
