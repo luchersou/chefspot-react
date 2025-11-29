@@ -95,7 +95,7 @@ export const MealCard = ({
           <h2 className="font-bold text-lg">{name}</h2>
         </CardHeader>
 
-        <CardContent className="space-y-3 text-sm text-gray-700">
+        <CardContent className="space-y-3 text-sm text-gray-700 pb-14">
           <div className="flex items-center gap-2">
             <Tag className="w-4 h-4 text-orange-600" />
             <span>
@@ -121,7 +121,7 @@ export const MealCard = ({
             <Button
               variant="outline"
               size="sm"
-              className="w-full"
+              className="absolute bottom-3 left-3 right-3 w-auto"
               onClick={handleOverviewClick}
             >
               See Overview
