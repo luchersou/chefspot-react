@@ -36,9 +36,9 @@ export const LoginForm = () => {
         addFavorite(state.favoriteMeal);
       }
       navigate(state?.from || "/dashboard", { replace: true });
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Login error:", error);
-      setError(getFirebaseLoginError(error.code));
+      setError(getFirebaseLoginError((error as any).code));
     }
   };
 
@@ -85,7 +85,7 @@ export const LoginForm = () => {
           </div>
 
           <div className="space-y-1">
-            <Label htmlFor="password">Senha</Label>
+            <Label htmlFor="password">password</Label>
             <Input
               id="password"
               type="password"

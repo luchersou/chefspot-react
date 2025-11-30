@@ -21,8 +21,14 @@ export const SignUpForm = () => {
   const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-    setError(null); 
+    const { name, value } = e.target;
+
+    setForm(prev => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    setError(null);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -37,9 +43,9 @@ export const SignUpForm = () => {
     try {
       await signup(form.email, form.password, form.name);
       navigate("/");
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Signup error:", error);
-      setError(getFirebaseSignupError(error.code));
+      setError(getFirebaseSignupError((error as any).code));
     }
   };
 
@@ -84,7 +90,6 @@ export const SignUpForm = () => {
             />
           </div>
 
-          {/* PASSWORD */}
           <div className="flex flex-col space-y-1">
             <Label htmlFor="password">Password</Label>
             <Input
@@ -99,7 +104,6 @@ export const SignUpForm = () => {
             />
           </div>
 
-          {/* CONFIRM PASSWORD */}
           <div className="flex flex-col space-y-1">
             <Label htmlFor="confirmPassword">Confirm password</Label>
             <Input
@@ -114,7 +118,6 @@ export const SignUpForm = () => {
             />
           </div>
 
-          {/* 🔥 ERRO AQUI (entre confirm e botão) */}
           {error && (
             <p className="text-red-500 text-sm font-medium -mt-2">
               {error}

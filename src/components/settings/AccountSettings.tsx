@@ -24,8 +24,8 @@ export const AccountSettings = () => {
       }
 
       setMessage("Data updated successfully!");
-    } catch (error: any) {
-      setMessage(`Error: ${error.message}`);
+    } catch (error: unknown) {
+      setMessage(`Error: ${(error as any).message}`);
     } finally {
       setLoading(false);
     }

@@ -43,9 +43,9 @@ export const DangerZone = () => {
       setMessage("Account deleted successfully!");
       setOpen(false);
       setPassword("");
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Delete error:", error);
-      setMessage(getFirebaseDeleteError(error.code));
+      setMessage(getFirebaseDeleteError((error as any).code));
     } finally {
       setLoading(false);
     }
