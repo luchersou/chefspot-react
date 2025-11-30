@@ -10,7 +10,7 @@ interface AppBreadcrumbsProps {
   items: Crumb[];
 }
 
-export function AppBreadcrumbs({ items }: AppBreadcrumbsProps) {
+export const AppBreadcrumbs = ({ items }: AppBreadcrumbsProps) => {
   return (
     <Breadcrumb>
       <BreadcrumbList>

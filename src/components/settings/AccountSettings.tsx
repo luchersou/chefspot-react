@@ -59,7 +59,7 @@ export const AccountSettings = () => {
           </div>
 
           {message && (
-            <p className={`text-sm ${message.startsWith("Erro") ? "text-red-500" : "text-green-600"}`}>
+            <p className={`text-sm ${message.startsWith("Error") ? "text-red-500" : "text-green-600"}`}>
               {message}
             </p>
           )}
