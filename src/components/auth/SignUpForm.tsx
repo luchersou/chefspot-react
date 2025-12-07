@@ -60,7 +60,6 @@ export const SignUpForm = () => {
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
 
-          {/* NAME */}
           <div className="flex flex-col space-y-1">
             <Label htmlFor="name">Name</Label>
             <Input
@@ -75,7 +74,6 @@ export const SignUpForm = () => {
             />
           </div>
 
-          {/* EMAIL */}
           <div className="flex flex-col space-y-1">
             <Label htmlFor="email">Email</Label>
             <Input

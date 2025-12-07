@@ -10,7 +10,7 @@ export const SignUp = () => {
         <img 
           src={bgLogin}
           alt="Background"
-          loading="eager"
+          fetchPriority="high"
           className="
             absolute inset-0 
             w-full h-full
