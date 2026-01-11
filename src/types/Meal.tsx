@@ -4,5 +4,4 @@ export type Meal = {
   strMealThumb: string;
   strCategory: string;
   strArea: string;
-  [key: string]: string | undefined;
-};
+} & Record<string, string | undefined>;
