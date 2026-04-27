@@ -82,8 +82,7 @@ export const Hero = () => {
         {/* Title */}
         <h1
           ref={titleRef}
-          className="font-serif text-5xl sm:text-6xl font-bold text-white leading-[1.1] mb-5 max-w-2xl opacity-0 translate-y-8"
-          style={{ fontFamily: "'Playfair Display', serif" }}
+          className="font-playfair text-5xl sm:text-6xl font-bold text-white leading-[1.1] mb-5 max-w-2xl opacity-0 translate-y-8"
         >
           Find your next{" "}
           <em className="italic text-orange-400">favorite recipe</em>
