@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { api } from "@/services/api";
 import { type Meal } from "@/types/Meal";
+import { ENDPOINTS } from "@/services/endpoints";
 
 interface MealsResponse {
   meals: Meal[] | null;
@@ -11,7 +12,7 @@ export const useMealsByName = (name: string) =>{
     queryKey: ["mealsByName", name],
     queryFn: () =>
       api<MealsResponse>(
-        `https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`
+        ENDPOINTS.mealsByName(name)
       ),
     enabled: !!name,
   });
