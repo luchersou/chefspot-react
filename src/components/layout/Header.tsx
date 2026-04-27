@@ -28,7 +28,7 @@ export const Header = () => {
       "
     >
       <div className="mx-auto px-4 sm:px-6 md:px-10">
-        <div className="flex items-center justify-between h-12 ">
+        <div className="flex items-center justify-between h-16 ">
           <Logo />
           <div className="flex items-center gap-2 sm:gap-4 md:gap-8">
             <Button
