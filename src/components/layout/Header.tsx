@@ -18,7 +18,7 @@ export const Header = () => {
   return (
     <header
       className="
-        backdrop-blur-md 
+        backdrop-blur-sm 
         bg-white/20 
         border border-white/30 
         shadow-sm
@@ -28,7 +28,7 @@ export const Header = () => {
       "
     >
       <div className="mx-auto px-4 sm:px-6 md:px-10">
-        <div className="flex items-center justify-between h-16 sm:h-20">
+        <div className="flex items-center justify-between h-12 ">
           <Logo />
           <div className="flex items-center gap-2 sm:gap-4 md:gap-8">
             <Button
