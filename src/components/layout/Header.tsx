@@ -20,13 +20,14 @@ export const Header = () => {
       className="
         backdrop-blur-md 
         bg-white/20 
-        border-b border-white/30 
+        border border-white/30 
         shadow-sm
-        fixed top-0 left-0 w-full 
+        fixed top-4 left-4 right-4
         z-50
+        rounded-2xl
       "
     >
-      <div className="mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 2xl:px-32">
+      <div className="mx-auto px-4 sm:px-6 md:px-10">
         <div className="flex items-center justify-between h-16 sm:h-20">
           <Logo />
           <div className="flex items-center gap-2 sm:gap-4 md:gap-8">
@@ -49,7 +50,6 @@ export const Header = () => {
             >
               About Us
             </Button>
-
 
             {user ? (
               <UserMenu user={user} onLogout={() => logout()} />
