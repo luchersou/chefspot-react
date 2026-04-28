@@ -2,7 +2,7 @@
 
 A modern recipe discovery app built with **React 19**, **TypeScript**, **Vite**, and powered by **TheMealDB API** using **TanStack React Query**. The project includes authentication with **Firebase**, global state management with **Context API**, beautiful UI using **shadcn/ui + Tailwind CSS**, animations with **Framer Motion** and **GSAP**, and a clean, scalable architecture.
 
-#### Live demo: chefspot-react.vercel.app/
+#### Live demo: [chefspot-react.vercel.app/](https://chefspot-react.vercel.app/)
 
 ## 🚀 Features
 
