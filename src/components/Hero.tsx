@@ -5,14 +5,19 @@ import { Search, Globe, Heart } from "lucide-react";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
+const BADGES = [
+  { icon: <Globe className="w-3.5 h-3.5" />, label: "Global Cuisines" },
+  { icon: <Heart className="w-3.5 h-3.5" />, label: "Save Favorites" },
+];
+
 export const Hero = () => {
-  const eyebrowRef = useRef(null);
-  const titleRef = useRef(null);
-  const subtitleRef = useRef(null);
-  const badgesRef = useRef(null);
-  const ctaRef = useRef(null);
-  const heroImgRef = useRef(null);
-  const heroBgRef = useRef(null);
+  const eyebrowRef  = useRef<HTMLDivElement>(null);
+  const titleRef    = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const badgesRef   = useRef<HTMLDivElement>(null);
+  const ctaRef      = useRef<HTMLDivElement>(null);
+  const heroImgRef  = useRef<HTMLImageElement>(null);
+  const heroBgRef   = useRef<HTMLDivElement>(null);
   const heroRef     = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -21,11 +26,11 @@ export const Hero = () => {
 
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-    tl.to(eyebrowRef.current,    { opacity: 1, y: 0, duration: 0.8 }, 0.3)
-      .to(titleRef.current,      { opacity: 1, y: 0, duration: 1.0 }, 0.55)
-      .to(subtitleRef.current,   { opacity: 1, y: 0, duration: 0.8 }, 0.85)
-      .to(badgesRef.current,     { opacity: 1, y: 0, duration: 0.7 }, 1.05)
-      .to(ctaRef.current,        { opacity: 1, y: 0, duration: 0.7 }, 1.2);
+    tl.to(eyebrowRef.current,  { opacity: 1, y: 0, duration: 0.8 }, 0.3)
+      .to(titleRef.current,    { opacity: 1, y: 0, duration: 1.0 }, 0.55)
+      .to(subtitleRef.current, { opacity: 1, y: 0, duration: 0.8 }, 0.85)
+      .to(badgesRef.current,   { opacity: 1, y: 0, duration: 0.7 }, 1.05)
+      .to(ctaRef.current,      { opacity: 1, y: 0, duration: 0.7 }, 1.2);
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = hero.getBoundingClientRect();
@@ -46,6 +51,7 @@ export const Hero = () => {
     hero.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
+      tl.kill();
       hero.removeEventListener("mousemove", handleMouseMove);
       hero.removeEventListener("mouseleave", handleMouseLeave);
     };
@@ -68,10 +74,7 @@ export const Hero = () => {
       <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center gap-0">
 
         {/* Eyebrow */}
-        <div
-          ref={eyebrowRef}
-          className="flex items-center gap-3 mb-6 opacity-0 translate-y-5"
-        >
+        <div ref={eyebrowRef} className="flex items-center gap-3 mb-6 opacity-0 translate-y-5">
           <div className="w-8 h-px bg-orange-400/70" />
           <span className="text-[11px] font-medium tracking-[0.2em] uppercase text-orange-400/90">
             Discover · Cook · Savor
@@ -99,10 +102,7 @@ export const Hero = () => {
 
         {/* Badges */}
         <div ref={badgesRef} className="flex items-center gap-3 mb-9 opacity-0 translate-y-5">
-          {[
-            { icon: <Globe className="w-3.5 h-3.5" />, label: "Global Cuisines" },
-            { icon: <Heart className="w-3.5 h-3.5" />, label: "Save Favorites" },
-          ].map(({ icon, label }) => (
+          {BADGES.map(({ icon, label }) => (
             <div
               key={label}
               className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/7 border border-white/12 backdrop-blur-md text-white/75 text-xs tracking-wide"
