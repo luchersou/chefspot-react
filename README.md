@@ -1,8 +1,8 @@
 # 🍽️ Chef Spot
 
-A modern recipe discovery app built with **React 19**, **TypeScript**, **Vite**, and powered by **TheMealDB API** using **TanStack React Query**. The project includes authentication with **Firebase**, global state management with **Context API**, beautiful UI using **shadcn/ui + Tailwind CSS**, animations with **Framer Motion**, and a clean, scalable architecture.
+A modern recipe discovery app built with **React 19**, **TypeScript**, **Vite**, and powered by **TheMealDB API** using **TanStack React Query**. The project includes authentication with **Firebase**, global state management with **Context API**, beautiful UI using **shadcn/ui + Tailwind CSS**, animations with **Framer Motion** and **GSAP**, and a clean, scalable architecture.
 
-#### Live demo: https://chefspot-3bd.netlify.app/
+#### Live demo: chefspot-react.vercel.app/
 
 ## 🚀 Features
 
@@ -96,7 +96,7 @@ Changes text colors based on the background of the current page.
 | API Consumption  | TanStack React Query           |
 | State Management | Context API (Auth + Favorites) |
 | UI               | shadcn/ui, Tailwind CSS        |
-| Animations       | Framer Motion                  |
+| Animations       | Framer Motion, GSAP            |
 | Routing          | React Router DOM               |
 | Auth             | Firebase Authentication        |
 
